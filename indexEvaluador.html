@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluador de Aspirantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <!-- EVALUADOR DE ASPIRANTES -->
+
+    <!-- Creamos una Seccion Para Solicitar Los Datos de Cada Aspirante -->
+        <section id="aspirante">
+
+        <!-- Titulo de donde se Procesan los Datos -->
+            <h2 id="aspirante_lblAspirante">Evalución de Formularios - Cargar de Resultados <br> Global Innovators Corp. </h2>
+
+        <!-- Input del Nombre del aspirante -->
+            <div>
+                <label> Nombre:
+                    <input type="text" id="aspirante_inNombre" placeholder="Ej: Mario">
+                </label>
+            </div>
+
+        <!-- Input de la Cedula del Aspirante -->
+            <div>
+                <label> Cedula:
+                    <input type="text" id="aspirante_inCedula" placeholder="Ej: 12345678">
+                </label>
+            </div>
+
+        <!-- Input de las notas del Examen Escrito del Aspirante -->
+            <div>
+                <label> Nota del Examen Escrito:
+                    <input type="number" id="aspirante_inNotaExamenEscrito" placeholder="Ej: 19" min="0" max="20">
+                </label>
+            </div>
+
+        <!-- Input de las notas del Examen Practico del Aspirante -->
+            <div >
+                <label> Nota del Examen Práctico:
+                    <input type="number" id="aspirante_inNotaExamenPractico" placeholder="Ej: 16" min="0" max="20">
+                </label>
+            </div>
+
+        <!-- Input de las notas del Examen Aptitudes del Aspirante -->
+            <div >
+                <label> Nota del Examen Aptitudes:
+                    <input type="number" id="aspirante_inNotaExamenAptitudes" placeholder="Ej: 17" min="0" max="20">
+                </label>
+            </div>
+    
+    <!-- Seciones De Preguntas que Rellena el Evaluador para Calificar al Aspirante -->
+
+        <!-- Separador de Secciones -->
+            <hr> 
+
+            <!-- POSTGRADO 35pts -->
+        <h4>Formato CO-5</h4>
+
+        <!-- Input de la Pregunta 1 -->
+            <div>
+                <label> Preg.5.a: 
+                    <input type="number" id="aspirante_inPregunta1" placeholder="Ingrese el puntaje obtenido" min="0" max="25">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 2 -->
+            <div>
+                <label> Preg.5.b:
+                    <input type="number" id="aspirante_inPregunta2" placeholder="Ingrese el puntaje obtenido" min="0" max="20">
+                </label>
+
+        <!-- Input de la Pregunta 3 -->
+            <div>
+                <label> Preg.5.c:
+                    <input type="number" id="aspirante_inPregunta3" placeholder="Ingrese el puntaje obtenido" min="0" max="6">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 4 -->
+            <div>
+                <label> Preg.5.d:
+                    <input type="number" id="aspirante_inPregunta4" placeholder="Ingrese el puntaje obtenido" min="0" max="5">
+                </label>
+            </div>
+
+        <!-- Separador de Secciones -->
+            <hr> 
+
+            <!-- PREGRADO 30pts -->
+        <h4>Formato CO-5.1</h4>
+
+        <!-- Input de la Pregunta 5 -->
+            <div>
+                <label> Preg.5.1.a:
+                    <input type="number" id="aspirante_inPregunta5" placeholder="Ingrese el puntaje obtenido" min="0" max="25">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 6 -->
+            <div>
+                <label> Preg.5.1.b:
+                    <input type="number" id="aspirante_inPregunta6" placeholder="Ingrese el puntaje obtenido" min="0" max="10">
+                </label>
+
+        <!-- Input de la Pregunta 7 -->
+            <div>
+                <label> Preg.5.1.c:
+                    <input type="number" id="aspirante_inPregunta7" placeholder="Ingrese el puntaje obtenido" min="0" max="3">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 8 -->
+            <div>
+                <label> Preg.5.1.d:
+                    <input type="number" id="aspirante_inPregunta8" placeholder="Ingrese el puntaje obtenido" min="0" max="5">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 9 -->
+            <div>
+                <label> Preg.5.1.e:
+                    <input type="number" id="aspirante_inPregunta9" placeholder="Ingrese el puntaje obtenido" min="0" max="3">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 10 -->
+            <div>
+                <label> Preg.5.1.f:
+                    <input type="number" id="aspirante_inPregunta10" placeholder="Ingrese el puntaje obtenido" min="0" max="3">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 11 -->
+            <div>
+                <label> Preg.5.1.g:
+                    <input type="number" id="aspirante_inPregunta11" placeholder="Ingrese el puntaje obtenido" min="0" max="3">
+                </label>
+            </div>
+            
+        <!-- Separador de Secciones -->
+            <hr>
+
+            <!-- PRODUCCIÓN 15pts -->
+        <h4>Formato CO-5.2</h4>
+
+        <!-- Input de la Pregunta 12 -->
+            <div>
+                <label> Preg.5.2.a:
+                    <input type="number" id="aspirante_inPregunta12" placeholder="Ingrese el puntaje obtenido" min="0" max="15">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 13 -->
+            <div>
+                <label> Preg.5.2.b:
+                    <input type="number" id="aspirante_inPregunta13" placeholder="Ingrese el puntaje obtenido" min="0" max="12">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 14 -->
+            <div>
+                <label> Preg.5.2.c:
+                    <input type="number" id="aspirante_inPregunta14" placeholder="Ingrese el puntaje obtenido" min="0" max="10">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 15 -->
+            <div>
+                <label> Preg.5.2.d:
+                    <input type="number" id="aspirante_inPregunta15" placeholder="Ingrese el puntaje obtenido" min="0" max="6">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 16  -->
+            <div>
+                <label> Preg.5.2.e:
+                    <input type="number" id="aspirante_inPregunta16" placeholder="Ingrese el puntaje obtenido" min="0" max="4">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 17 -->
+            <div>
+                <label> Preg.5.2.f:
+                    <input type="number" id="aspirante_inPregunta17" placeholder="Ingrese el puntaje obtenido" min="0" max="3">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 18  -->
+            <div>
+                <label> Preg.5.2.g:
+                    <input type="number" id="aspirante_inPregunta18" placeholder="Ingrese el puntaje obtenido" min="0" max="10">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 19 -->
+            <div>
+                <label> Preg.5.2.h:
+                    <input type="number" id="aspirante_inPregunta19" placeholder="Ingrese el puntaje obtenido" min="0" max="6">
+                </label>
+            </div>
+
+        <!-- Input de la Pregunta 20 -->
+            <div>
+                <label> Preg.5.2.i:
+                    <input type="number" id="aspirante_inPregunta20" placeholder="Ingrese el puntaje obtenido" min="0" max="15">
+                </label>
+            </div>
+
+        <!-- Separador de Secciones -->
+            <hr> 
+
+            <!-- MERITOS 20pts -->
+        <h4>Formato CO-5.3</h4>
+
+        <!-- Input de la Pregunta 21 -->
+            <div>
+                <label> Preg.5.3.a:
+                    <input type="number" id="aspirante_inPregunta21" placeholder="Ingrese el puntaje obtenido" min="0" max="12">
+                </label>                
+            </div>
+
+        <!-- Input de la Pregunta 22 -->
+            <div>
+                <label> Preg.5.3.b:
+                    <input type="number" id="aspirante_inPregunta22" placeholder="Ingrese el puntaje obtenido" min="0" max="8">
+                </label>                
+            </div>
+
+        <!-- Input de la Pregunta 23 -->
+            <div>
+                <label> Preg.5.3.c:
+                    <input type="number" id="aspirante_inPregunta23" placeholder="Ingrese el puntaje obtenido" min="0" max="6">
+                </label>                
+            </div> 
+
+        <!-- Input de la Pregunta 24 -->
+            <div>
+                <label> Preg.5.3.d:
+                    <input type="number" id="aspirante_inPregunta24" placeholder="Ingrese el puntaje obtenido" min="0" max="3">
+                </label>                
+            </div>
+
+        <!-- Input de la Pregunta 25 -->
+            <div>
+                <label> Preg.5.3.e:
+                    <input type="number" id="aspirante_inPregunta25" placeholder="Ingrese el puntaje obtenido" min="0" max="4">
+                </label>                
+            </div>
+
+        <!-- Input de la Pregunta 26 --> 
+            <div>
+                <label> Preg.5.3.f:
+                    <input type="number" id="aspirante_inPregunta26" placeholder="Ingrese el puntaje obtenido" min="0" max="6">
+                </label>                
+            </div>
+
+        <!-- Input de la Pregunta 27 -->
+            <div>
+                <label> Preg.5.3.g:
+                    <input type="number" id="aspirante_inPregunta27" placeholder="Ingrese el puntaje obtenido" min="0" max="4">
+                </label>                
+            </div>
+
+        <!-- Input de la Pregunta 28 -->
+            <div>
+                <label> Preg.5.3.h:
+                    <input type="number" id="aspirante_inPregunta28" placeholder="Ingrese el puntaje obtenido" min="0" max="2">
+                </label>                
+            </div>
+
+        <!-- Separador de Secciones -->
+            <hr> 
+
+        <!-- Jurados Tabla CO-10 -->
+            <h4>Formato CO-10</h4>
+
+        <!-- Tabla de Puntuaciones --> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspecto a Evaluar</th>
+                        <th>Jurado A</th>
+                        <th>Jurado B</th>
+                        <th>Jurado C</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aspecto 1</td>
+                        <td><input type="number" id="aspirante_inJuradoA1" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB1" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC1" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 2</td>
+                        <td><input type="number" id="aspirante_inJuradoA2" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB2" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC2" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 3</td>
+                        <td><input type="number" id="aspirante_inJuradoA3" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB3" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC3" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 4</td>
+                        <td><input type="number" id="aspirante_inJuradoA4" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB4" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC4" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 5</td>
+                        <td><input type="number" id="aspirante_inJuradoA5" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB5" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC5" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 6</td>
+                        <td><input type="number" id="aspirante_inJuradoA6" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB6" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC6" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 7</td>
+                        <td><input type="number" id="aspirante_inJuradoA7" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB7" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC7" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 8</td>
+                        <td><input type="number" id="aspirante_inJuradoA8" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB8" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC8" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 9</td>
+                        <td><input type="number" id="aspirante_inJuradoA9" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB9" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC9" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 10</td>
+                        <td><input type="number" id="aspirante_inJuradoA10" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB10" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC10" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 11</td>
+                        <td><input type="number" id="aspirante_inJuradoA11" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB11" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC11" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                    <tr>
+                        <td>Aspecto 12</td>
+                        <td><input type="number" id="aspirante_inJuradoA12" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoB12" min="0" max="5" placeholder="Pts"></td>
+                        <td><input type="number" id="aspirante_inJuradoC12" min="0" max="5" placeholder="Pts"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <!-- Creamos los Botones de Aceptar y Cancelar -->
+            <div class="button-group">
+                
+                <button type="button" id="aspirante_btnCancelar"><Strong> Cancelar Envio</Strong></button>
+                <button type="button" id="aspirante_btnEnviar"><strong> Enviar Evaluación </strong></button>
+
+            </div>
+
+        </section>
+
+    <!-- Importamos Los Archivos Js -->
+          <script type="module">
+
+            import Cl_cAspirante from "./dist/controllers/Cl_cAspirante.js";
+
+            // Importamos SOLO las vistas planas
+                import Cl_vAspirante from "./dist/views/Cl_vAspirante.js";
+
+            // 1. Instanciamos las vistas
+                const vistaAspirante = new Cl_vAspirante();
+
+            // 2. Inyectamos las vistas en los controladores.
+                new Cl_cAspirante(vistaAspirante);
+
+        </script>
+
+</body>
+</html>

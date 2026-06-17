@@ -1,0 +1,179 @@
+// ArrayCommands.txt
+
+================================================
+📌 MÉTODOS IMPORTANTES DE ARRAYS EN JAVASCRIPT
+================================================
+
+1️⃣ push()  → Agrega uno o más elementos al FINAL
+   let frutas = ["🍎", "🍌"];
+   frutas.push("🍒");
+   console.log(frutas); // ["🍎", "🍌", "🍒"]
+
+2️⃣ pop()   → Elimina el ÚLTIMO elemento y lo devuelve
+   let frutas = ["🍎", "🍌", "🍒"];
+   let ultimo = frutas.pop();
+   console.log(ultimo);  // "🍒"
+   console.log(frutas);  // ["🍎", "🍌"]
+
+3️⃣ unshift() → Agrega uno o más elementos al PRINCIPIO
+   let frutas = ["🍎", "🍌"];
+   frutas.unshift("🍒");
+   console.log(frutas); // ["🍒", "🍎", "🍌"]
+
+4️⃣ shift() → Elimina el PRIMER elemento y lo devuelve
+   let frutas = ["🍎", "🍌", "🍒"];
+   let primero = frutas.shift();
+   console.log(primero); // "🍎"
+   console.log(frutas);  // ["🍌", "🍒"]
+
+5️⃣ forEach() → Recorre CADA elemento del array
+   let numeros = [1, 2, 3];
+   numeros.forEach(n => console.log(n * 2));
+   // Salida: 2, 4, 6
+
+6️⃣ map() → Crea un NUEVO array transformando cada elemento
+   let numeros = [1, 2, 3];
+   let duplicados = numeros.map(n => n * 2);
+   console.log(duplicados); // [2, 4, 6]
+
+7️⃣ filter() → Filtra elementos que cumplen una condición
+   let edades = [15, 18, 22, 16];
+   let mayores = edades.filter(e => e >= 18);
+   console.log(mayores); // [18, 22]
+
+8️⃣ sort() → Ordena el array
+   let numeros = [3, 1, 4, 2];
+   numeros.sort((a, b) => a - b); // ascendente
+   console.log(numeros); // [1, 2, 3, 4]
+
+   let letras = ["c", "a", "b"];
+   letras.sort();
+   console.log(letras); // ["a", "b", "c"]
+
+9️⃣ splice() → Elimina o reemplaza elementos en cualquier posición
+   let numeros = [1, 2, 3, 4];
+   numeros.splice(1, 2); // desde índice 1, elimina 2 elementos
+   console.log(numeros); // [1, 4]
+
+🔟 length → Propiedad que devuelve el número de elementos
+   let frutas = ["🍎", "🍌", "🍒"];
+   console.log(frutas.length); // 3
+
+================================================
+🆕 MÉTODOS ADICIONALES (IMPORTANTES)
+================================================
+
+1️⃣1️⃣ reduce() → Reduce el array a un SOLO valor (acumulador)
+   // Sumar todos los números
+   let numeros = [1, 2, 3, 4];
+   let suma = numeros.reduce((acumulador, actual) => acumulador + actual, 0);
+   console.log(suma); // 10
+
+   // Producto de todos los números
+   let producto = numeros.reduce((acum, actual) => acum * actual, 1);
+   console.log(producto); // 24
+
+   // Con objetos: sumar edades
+   let personas = [
+     { nombre: "Ana", edad: 20 },
+     { nombre: "Luis", edad: 25 },
+     { nombre: "Carlos", edad: 30 }
+   ];
+   let sumaEdades = personas.reduce((total, persona) => total + persona.edad, 0);
+   console.log(sumaEdades); // 75
+
+1️⃣2️⃣ reduceRight() → Igual que reduce pero empieza por la DERECHA
+   let palabras = ["Hola", "mundo", "desde", "JS"];
+   let frase = palabras.reduceRight((acum, actual) => acum + " " + actual);
+   console.log(frase); // "JS desde mundo Hola"
+
+1️⃣3️⃣ find() → Devuelve el PRIMER elemento que cumple una condición
+   let edades = [15, 18, 22, 16];
+   let primero = edades.find(e => e >= 18);
+   console.log(primero); // 18
+
+1️⃣4️⃣ findIndex() → Devuelve el ÍNDICE del primer elemento que cumple una condición
+   let edades = [15, 18, 22, 16];
+   let indice = edades.findIndex(e => e >= 18);
+   console.log(indice); // 1
+
+1️⃣5️⃣ some() → ¿Algún elemento cumple la condición? (true/false)
+   let numeros = [1, 2, 3];
+   let hayPares = numeros.some(n => n % 2 === 0);
+   console.log(hayPares); // true
+
+1️⃣6️⃣ every() → ¿TODOS los elementos cumplen la condición? (true/false)
+   let numeros = [2, 4, 6];
+   let todosPares = numeros.every(n => n % 2 === 0);
+   console.log(todosPares); // true
+
+1️⃣7️⃣ includes() → ¿El array contiene un elemento? (true/false)
+   let frutas = ["🍎", "🍌", "🍒"];
+   console.log(frutas.includes("🍌")); // true
+   console.log(frutas.includes("🍊")); // false
+
+1️⃣8️⃣ indexOf() → Busca la posición de un elemento
+   let frutas = ["🍎", "🍌", "🍒"];
+   console.log(frutas.indexOf("🍌")); // 1
+   console.log(frutas.indexOf("🍊")); // -1 (no existe)
+
+1️⃣9️⃣ lastIndexOf() → Busca la ÚLTIMA posición de un elemento
+   let numeros = [1, 2, 3, 2, 4];
+   console.log(numeros.lastIndexOf(2)); // 3
+
+2️⃣0️⃣ concat() → Une DOS o más arrays en uno NUEVO
+   let arr1 = [1, 2];
+   let arr2 = [3, 4];
+   let arr3 = arr1.concat(arr2);
+   console.log(arr3); // [1, 2, 3, 4]
+
+2️⃣1️⃣ slice() → Extrae una parte del array (SIN modificar el original)
+   let frutas = ["🍎", "🍌", "🍒", "🥝", "🍊"];
+   let algunas = frutas.slice(1, 4); // desde índice 1 hasta 4 (no incluye 4)
+   console.log(algunas); // ["🍌", "🍒", "🥝"]
+   console.log(frutas);  // original intacto
+
+2️⃣2️⃣ join() → Convierte el array en un STRING con separador
+   let palabras = ["Hola", "mundo", "JS"];
+   let frase = palabras.join(" - ");
+   console.log(frase); // "Hola - mundo - JS"
+
+2️⃣3️⃣ reverse() → Invierte el orden del array (MODIFICA el original)
+   let numeros = [1, 2, 3, 4];
+   numeros.reverse();
+   console.log(numeros); // [4, 3, 2, 1]
+
+2️⃣4️⃣ fill() → Llena todo o parte del array con un valor fijo
+   let arr = [1, 2, 3, 4];
+   arr.fill(0, 1, 3); // desde índice 1 hasta 3 (no incluye 3) se llena con 0
+   console.log(arr); // [1, 0, 0, 4]
+
+2️⃣5️⃣ flat() → "Aplana" arrays anidados (convierte en uno solo)
+   let anidado = [1, [2, 3], [4, [5, 6]]];
+   let plano = anidado.flat(2); // profundidad 2
+   console.log(plano); // [1, 2, 3, 4, 5, 6]
+
+================================================
+🎯 EJEMPLO PRÁCTICO CON reduce() (MUY ÚTIL)
+================================================
+// Contar frecuencias de elementos
+let frutas = ["🍎", "🍌", "🍎", "🍒", "🍌", "🍎"];
+let conteo = frutas.reduce((contador, fruta) => {
+  contador[fruta] = (contador[fruta] || 0) + 1;
+  return contador;
+}, {});
+console.log(conteo);
+// { "🍎": 3, "🍌": 2, "🍒": 1 }
+
+// Agrupar objetos por una propiedad
+let personas = [
+  { nombre: "Ana", ciudad: "Madrid" },
+  { nombre: "Luis", ciudad: "Barcelona" },
+  { nombre: "Carlos", ciudad: "Madrid" }
+];
+let agrupadas = personas.reduce((grupo, persona) => {
+  grupo[persona.ciudad] = grupo[persona.ciudad] || [];
+  grupo[persona.ciudad].push(persona);
+  return grupo;
+}, {});
+console.log(agrupadas);

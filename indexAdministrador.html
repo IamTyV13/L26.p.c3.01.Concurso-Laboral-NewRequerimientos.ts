@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Aspirantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ADMINISTRADOR DE ASPIRANTES -->
+
+    <!-- Creamos una Sección donde Escogemos las tablas Solicitadas -->
+        <section id="concurso">
+
+        <!-- Título de donde se escoge que tabla ver -->
+            <h2>Gestion de Aspirantes - Panel Empresarial</h2>
+
+        <!-- Botones Para actualizar las entragas -->
+            <div class="button-group">
+                <button id="concurso_btVerListado"><strong> Listado de Aspirantes </strong></button>
+                <button id="concurso_btVerFormatoCO6"><strong> Formato CO-6 </strong></button>
+                <button id="concurso_btVerFormatoCO7"><strong> Formato CO-7 </strong></button>
+                <button id="concurso_btVerFormatoCO8"><strong> Formato CO-8 </strong></button>
+            </div>
+
+    <!-- Cierre de la Sección -->
+        </section>
+
+    <!-- Sección Tabla Listado de Aspirantes -->
+        <section id="listado" hidden>
+
+        <!-- Titulo de la Sección -->
+            <h2>Listado de Aspirantes</h2>
+
+            <!-- Div de la Tabla de la Sección -->
+                <div class="table-wrapper">
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listado_tblListado"></tbody>
+                    </table>
+
+                </div> 
+
+    <!-- Cierre de la Sección -->            
+        </section>
+
+    <!-- Sección de la Tabla del FormatoCO6 -->
+        <section id="formatoCO6" hidden>
+            
+       <!-- Titulo de la Sección -->
+            <h2>Formato CO-6</h2>
+
+        <!-- Div de la Tabla de la Sección -->
+            <div class="table-wrapper">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspirantes</th> 
+                            <th>Cédulas</th>
+                            <th>Postgrado (CO5) 35pts</th>
+                            <th>Pregrado (CO5.1) 30pts</th>
+                            <th>Producción (CO5.2) 15pts</th>
+                            <th>Méritos (CO5.3) 20pts</th>
+                            <th>Total Obtenido /100pts</th>
+                            <th>Calificación Final /20pts</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody id="formatoCO6_tblFormatoCO6"></tbody>
+                </table>
+
+                <div style="background-color: #e8edf5; margin: 15px; padding: 10px; border-radius: 5px;">
+                    <strong>Porcentaje de Aprobados:</strong> <span id="formatoCO6_lblPorcentAprobados">0</span>
+                    <br>
+                    <strong>Calificación más alta:</strong> <span id="formatoCO6_lblCalifMasAlta">0</span> /20pts
+                    <br>
+                    <strong>Calificación más baja:</strong> <span id="formatoCO6_lblCalifMasBaja">0</span> /20pts
+                </div>
+
+                <br>
+
+                <div >
+                    <label style="display: flex; gap: 8px; align-items: center; margin-top: 12px;"> Cédula:
+                        <input type="text" id="formatoCO6_inCedula" placeholder="Ej: 12345678">
+                        <button id="formatoCO6_btBuscar">Buscar</button>
+                    </label>
+                </div>
+
+            </div>
+
+    <!-- Cierre de Sección -->
+        </section>
+
+    <!-- Sección de la Tabla del FormatoCO7 -->
+        <section id="formatoCO7" hidden>
+
+        <!-- Titulo de la Sección -->
+            <h2>Formato CO-7</h2>
+
+            <!-- Div de la Tabla de la Sección -->
+                <div class="table-wrapper">
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Participante(s)</th>
+                                <th>Documento de Identidad</th>
+                                <th>Calificación Obtenida (0-20pts)</th>
+                                <th>10% de la Califación Obtenida</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="formatoCO7_tblFormatoCO7"></tbody>
+                    </table>
+
+                </div> 
+
+    <!-- Cierre de la Sección -->            
+        </section>
+
+    <!-- Sección de la Tabla del FormatoCO8 -->
+        <section id="formatoCO8" hidden>
+
+        <!-- Titulo de la Sección -->
+            <h2>Formato CO-8</h2>
+
+            <!-- Div de la Tabla de la Sección -->
+                <div class="table-wrapper">
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Participante(s)</th>
+                                <th>Documento de Identidad</th>
+                                <th>Nota Examén Escrito</th>
+                                <th>Nota Examén Oral/Práctico/Mixto</th>
+                                <th>Calificación Obtenida</th>
+                                <th>60% de la Calificación Obtenida</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="formatoCO8_tblFormatoCO8"></tbody>
+                    </table>
+
+                </div> 
+
+    <!-- Cierre de la Sección -->            
+        </section>
+    
+
+    <!-- Botones de Recargar y Volver para las tablas -->
+        <div class="button-group">
+            <button id="entregas_btVolver"><strong> Volver </strong></button>
+            <button id="entregas_btRecargar"><strong> Recargar </strong></button>
+        </div>
+
+    <!-- Importamos Los Archivos Js -->
+        <script type="module">
+
+            import Cl_cConcurso from "./dist/controllers/Cl_cConcurso.js";
+            import Cl_vConcurso from "./dist/views/Cl_vConcurso.js";
+
+            const vConcurso = new Cl_vConcurso();
+
+            new Cl_cConcurso({ vista: vConcurso });
+
+        </script>
+        
+</body>
+</html>
