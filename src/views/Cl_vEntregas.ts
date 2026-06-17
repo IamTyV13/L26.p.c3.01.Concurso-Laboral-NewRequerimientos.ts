@@ -9,6 +9,7 @@ export default class Cl_vEntregas implements I_vEntregas {
         private uiFormatoCO7: HTMLDivElement;
         private uiFormatoCO8: HTMLDivElement;
         private uiFormatoCO9: HTMLDivElement;
+        private uiFormatoCO11: HTMLDivElement;
 
     // Tablas de las Secciones
         private tblListado: HTMLTableElement;
@@ -16,6 +17,7 @@ export default class Cl_vEntregas implements I_vEntregas {
         private tblFormatoCO7: HTMLTableElement;
         private tblFormatoCO8: HTMLTableElement;
         private tblFormatoCO9: HTMLTableElement;
+        private tblFormatoCO11: HTMLTableElement;
 
     // Botones de la tabla CO6
         private btBuscarCO6: HTMLButtonElement;
@@ -36,12 +38,14 @@ export default class Cl_vEntregas implements I_vEntregas {
         this.uiFormatoCO7 = document.getElementById("formatoCO7") as HTMLDivElement;
         this.uiFormatoCO8 = document.getElementById("formatoCO8") as HTMLDivElement;
         this.uiFormatoCO9 = document.getElementById("formatoCO9") as HTMLDivElement;
+        this.uiFormatoCO11 = document.getElementById("formatoCO11") as HTMLDivElement;
 
         this.tblListado = document.getElementById("listado_tblListado") as HTMLTableElement;
         this.tblFormatoCO6 = document.getElementById("formatoCO6_tblFormatoCO6") as HTMLTableElement;
         this.tblFormatoCO7 = document.getElementById("formatoCO7_tblFormatoCO7") as HTMLTableElement;
         this.tblFormatoCO8 = document.getElementById("formatoCO8_tblFormatoCO8") as HTMLTableElement;
         this.tblFormatoCO9 = document.getElementById("formatoCO9_tblFormatoCO9") as HTMLTableElement;
+        this.tblFormatoCO11 = document.getElementById("formatoCO11_tblFormatoCO11") as HTMLTableElement;
 
         this.btBuscarCO6 = document.getElementById("formatoCO6_btBuscar") as HTMLButtonElement;
         this.inCedulaBuscarCO6 = document.getElementById("formatoCO6_inCedula") as HTMLInputElement;
@@ -188,6 +192,32 @@ export default class Cl_vEntregas implements I_vEntregas {
             this.tblFormatoCO9.appendChild(fragment);
         }
 
+        mostrarFormatoCO11(aspirantes: Cl_mAspirante[]): void {
+            const fragment = document.createDocumentFragment();
+                if (aspirantes.length === 0) {
+                    const tr = document.createElement("tr");
+                        tr.innerHTML = `<td colspan="8" style="padding: 24px; color: #888;">No hay aspirantes registrados</td>`;
+                            fragment.appendChild(tr);
+
+            } else {
+                aspirantes.forEach((aspirante: Cl_mAspirante) => {
+                    const tr = document.createElement("tr");
+                        tr.innerHTML = `
+                            <td>${aspirante.nombre}</td>
+                            <td>${aspirante.cedula}</td>
+                            <td>${aspirante.calificacion10Porciento().toFixed(2)}</td>
+                            <td>${aspirante.calificacion60PorcientoCO8().toFixed(2)}</td>
+                            <td>${aspirante.calificacion30PorcientoAptitudes().toFixed(2)}</td>
+                            <td>${aspirante.notaDefinitiva().toFixed(2)}</td>
+                            <td>${aspirante.veridictoFinal()}</td>
+                        `;
+                        fragment.appendChild(tr);
+                    });
+                }
+            this.tblFormatoCO11.innerHTML = "";
+            this.tblFormatoCO11.appendChild(fragment);
+        }
+
     mostrarReporteCO6Individual(aspirante: Cl_mAspirante): void {
         const fragment = document.createDocumentFragment();
         const tr = document.createElement("tr");
@@ -218,6 +248,7 @@ export default class Cl_vEntregas implements I_vEntregas {
             case "formatoCO7": this.uiFormatoCO7.removeAttribute("hidden"); break;
             case "formatoCO8": this.uiFormatoCO8.removeAttribute("hidden"); break;
             case "formatoCO9": this.uiFormatoCO9.removeAttribute("hidden"); break;
+            case "formatoCO11": this.uiFormatoCO11.removeAttribute("hidden"); break;
 
             default: console.error("No se ha Encontrado la Sección", tipo);
 
@@ -230,5 +261,6 @@ export default class Cl_vEntregas implements I_vEntregas {
         this.uiFormatoCO7.setAttribute("hidden", "true");
         this.uiFormatoCO8.setAttribute("hidden", "true");
         this.uiFormatoCO9.setAttribute("hidden", "true");
+        this.uiFormatoCO11.setAttribute("hidden", "true");
     }
 }

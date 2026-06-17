@@ -9,6 +9,7 @@ export default interface I_vEntregas {
     mostrarFormatoCO7(aspirante: Cl_mAspirante[]): void;
     mostrarFormatoCO8(aspirante: Cl_mAspirante[]): void;
     mostrarFormatoCO9(aspirante: Cl_mAspirante[]): void;
+    mostrarFormatoCO11(aspirante: Cl_mAspirante[]): void;
 
     onRecargar(callback: () => void): void;
     onVolver(callback: () => void): void;

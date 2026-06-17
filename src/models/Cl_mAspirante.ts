@@ -176,6 +176,14 @@ export default class Cl_mAspirante {
             return c10Porcent + c60Porcent + c30Porcent;
         }
 
+    // Metodo de Veredicto
+        veridictoFinal(): string {
+            if ( this.notaDefinitiva() >= 16) {
+                return "Aprobado";              
+            }
+                return "Reprobado";
+        }
+
     // Suma de puntos de Cada Jurado en Especifico
         sumaPtsJuradoA(): number{
             const suma = this.juradoACO10.reduce((suma, pts) => suma + pts, 0);

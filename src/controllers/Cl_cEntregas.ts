@@ -75,6 +75,7 @@ export default class Cl_cEntregas {
                 case "formatoCO7": this.vista.mostrarFormatoCO7(this.modelo.getAspirantes()); break;
                 case "formatoCO8": this.vista.mostrarFormatoCO8(this.modelo.getAspirantes()); break;
                 case "formatoCO9": this.vista.mostrarFormatoCO9(this.modelo.getAspirantes()); break;
+                case "formatoCO11": this.vista.mostrarFormatoCO11(this.modelo.getAspirantes()); break;
 
                 default: console.error("No se ha Encontrado la Sección", this.tipo);
 

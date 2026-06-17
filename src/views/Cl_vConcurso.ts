@@ -10,6 +10,7 @@ export default class Cl_vConcurso implements I_vConcurso {
         private btVerFormatoCO7: HTMLButtonElement;
         private btVerFormatoCO8: HTMLButtonElement;
         private btVerFormatoCO9: HTMLButtonElement;
+        private btVerFormatoCO11: HTMLButtonElement;
     
     constructor() {
         
@@ -18,6 +19,7 @@ export default class Cl_vConcurso implements I_vConcurso {
         this.btVerFormatoCO7 = document.getElementById("concurso_btVerFormatoCO7") as HTMLButtonElement;   
         this.btVerFormatoCO8 = document.getElementById("concurso_btVerFormatoCO8") as HTMLButtonElement;   
         this.btVerFormatoCO9 = document.getElementById("concurso_btVerFormatoCO9") as HTMLButtonElement;   
+        this.btVerFormatoCO11 = document.getElementById("concurso_btVerFormatoCO11") as HTMLButtonElement;   
 
     }
 
@@ -36,6 +38,9 @@ export default class Cl_vConcurso implements I_vConcurso {
 
         onVerFormatoCO9(callback: () => void): void {
             this.btVerFormatoCO9.onclick = callback;    }
+
+        onVerFormatoCO11(callback: () => void): void {
+            this.btVerFormatoCO11.onclick = callback;    }
 
         /* deshabilitarBotones() {
             this.btVerListado.disabled = true;
