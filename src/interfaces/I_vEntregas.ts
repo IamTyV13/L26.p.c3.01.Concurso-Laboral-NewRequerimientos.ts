@@ -8,6 +8,7 @@ export default interface I_vEntregas {
     mostrarFormatoCO6(aspirante: Cl_mAspirante[], porcentAprobados: number, califMasAlta: number, califMasBaja: number): void;
     mostrarFormatoCO7(aspirante: Cl_mAspirante[]): void;
     mostrarFormatoCO8(aspirante: Cl_mAspirante[]): void;
+    mostrarFormatoCO9(aspirante: Cl_mAspirante[]): void;
 
     onRecargar(callback: () => void): void;
     onVolver(callback: () => void): void;
