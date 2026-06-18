@@ -21,9 +21,13 @@ export default class Cl_vEntregas implements I_vEntregas {
         private tblFormatoCO10: HTMLTableElement;
         private tblFormatoCO11: HTMLTableElement;
 
-    // Botones de la tabla CO6
+    // Botones de la Tabla CO6
         private btBuscarCO6: HTMLButtonElement;
         private inCedulaBuscarCO6: HTMLInputElement;
+
+    // Botones de la Tabla Listado
+        private inCedulaListado: HTMLInputElement;
+        private btBuscarAsp: HTMLButtonElement;
 
     // Requerimientos 
         private lblPorcentAprobados: HTMLElement;
@@ -54,6 +58,9 @@ export default class Cl_vEntregas implements I_vEntregas {
         this.btBuscarCO6 = document.getElementById("formatoCO6_btBuscar") as HTMLButtonElement;
         this.inCedulaBuscarCO6 = document.getElementById("formatoCO6_inCedula") as HTMLInputElement;
 
+        this.inCedulaListado = document.getElementById("listado_inCedula") as HTMLInputElement;
+        this.btBuscarAsp = document.getElementById("listado_btBuscarAsp") as HTMLButtonElement;
+
         this.lblPorcentAprobados = document.getElementById("formatoCO6_lblPorcentAprobados") as HTMLElement;
         this.lblCalifMasAlta = document.getElementById("formatoCO6_lblCalifMasAlta") as HTMLElement;
         this.lblCalifMasBaja = document.getElementById("formatoCO6_lblCalifMasBaja") as HTMLElement;
@@ -74,6 +81,12 @@ export default class Cl_vEntregas implements I_vEntregas {
 
         get cedulaBuscarCO6(): string {
             return this.inCedulaBuscarCO6.value;   }
+
+        onBuscarListado(callback: () => void): void {
+            this.btBuscarAsp.onclick = callback;   }
+
+        get cedulaBuscarListado(): string {
+            return this.inCedulaListado.value   }
 
     // Métodos para Mostrar las Tablas
         mostrarListado(aspirantes: Cl_mAspirante[]): void {
@@ -277,8 +290,70 @@ export default class Cl_vEntregas implements I_vEntregas {
         this.tblFormatoCO6.appendChild(fragment);
     }
 
+    mostrarRespuestas(aspirante: Cl_mAspirante): void {
+        const html = `
+
+        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: #f9f9f9;">
+
+        <h3>Nombre:${aspirante.nombre} - Cedula:${aspirante.cedula}</h3>
+        
+        <h4> Formato (CO-5) - Total: ${aspirante.sumaPtsFormatoCO5()}</h4>
+            <ul>
+                <li>Pregunta 5.a: <input type="text" value="${aspirante.ptsFormatoCO5[0] || 0}" disabled> pts</li>
+                <li>Pregunta 5.b: <input type="text" value="${aspirante.ptsFormatoCO5[1] || 0}" disabled> pts</li>
+                <li>Pregunta 5.c: <input type="text" value="${aspirante.ptsFormatoCO5[2] || 0}" disabled> pts</li>
+                <li>Pregunta 5.d: <input type="text" value="${aspirante.ptsFormatoCO5[3] || 0}" disabled> pts</li>
+            </ul>
+        
+        <h4> Formato (CO-5.1) - Total: ${aspirante.sumaPtsFormatoCO51()}</h4>
+            <ul>
+                <li>Pregunta 5.1.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> pts</li>
+                <li>Pregunta 5.1.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> pts</li>
+                <li>Pregunta 5.1.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> pts</li>
+                <li>Pregunta 5.1.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> pts</li>
+                <li>Pregunta 5.1.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> pts</li>
+                <li>Pregunta 5.1.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> pts</li>
+                <li>Pregunta 5.1.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> pts</li>
+            </ul>
+
+        <h4> Formato (CO-5.2) - Total: ${aspirante.sumaPtsFormatoCO52()}</h4>
+            <ul>
+                <li>Pregunta 5.2.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.h: <input type="text" value="${aspirante.ptsFormatoCO51[7] || 0}" disabled> pts</li>
+                <li>Pregunta 5.2.i: <input type="text" value="${aspirante.ptsFormatoCO51[8] || 0}" disabled> pts</li>
+            </ul>
+
+        <h4> Formato (CO-5.3) - Total: ${aspirante.sumaPtsFormatoCO53()}</h4>
+            <ul>
+                <li>Pregunta 5.3.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> pts</li>
+                <li>Pregunta 5.3.h: <input type="text" value="${aspirante.ptsFormatoCO51[7] || 0}" disabled> pts</li>
+            </ul>
+        
+        </div>
+    `;
+    
+        document.getElementById("listado_lblRespuestas")!.innerHTML = html;
+
+    }
+
     mostrarMensajeSinResultados(mensaje: string): void {
         this.tblFormatoCO6.innerHTML = `<tr><td colspan="8" style="padding:24px;color:#888;">${mensaje}</td></tr>`;
+    }
+
+    mostrarMensajeSinResultados2(mensaje: string): void {
+        this.tblListado.innerHTML = `<tr><td colspan="8" style="padding:24px;color:#888;">${mensaje}</td></tr>`;
     }
 
     mostrar(tipo: string) {

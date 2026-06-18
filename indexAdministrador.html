@@ -34,7 +34,12 @@
         <section id="listado" hidden>
 
         <!-- Titulo de la Sección -->
-            <h2>Listado de Aspirantes</h2>
+            <div >
+                    <label style="display: flex; gap: 8px; align-items: center; margin-top: 12px;"> Cédula:
+                        <input type="text" id="listado_inCedula" placeholder="Ej: 12345678">
+                        <button id="listado_btBuscarAsp">Buscar</button>
+                    </label>
+                </div><h2>Listado de Aspirantes</h2>
 
             <!-- Div de la Tabla de la Sección -->
                 <div class="table-wrapper">
@@ -51,6 +56,10 @@
                     </table>
 
                 </div> 
+
+                <div id="listado_lblRespuestas">
+
+                </div>
 
     <!-- Cierre de la Sección -->            
         </section>

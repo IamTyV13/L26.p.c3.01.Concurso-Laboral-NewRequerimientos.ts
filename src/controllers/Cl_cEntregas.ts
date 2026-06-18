@@ -24,6 +24,7 @@ export default class Cl_cEntregas {
             this.vista.onRecargar(() => this.btRecargarOnClick());
             /* this.vista.onVolver(() => this.onVolver()); */
             this.vista.onBuscarCO6(() => this.btBuscarCO6OnClick());
+            this.vista.onBuscarListado(() => this.btBuscarEnListadoClick());
             this.vista.mostrar(this.tipo);
             this.btRecargarOnClick();
     }
@@ -53,6 +54,28 @@ export default class Cl_cEntregas {
         }
 
         this.vista.mostrarReporteCO6Individual(aspirante);
+    }
+
+    async btBuscarEnListadoClick() {
+        const cedula = this.vista.cedulaBuscarListado;
+
+        if (!cedula || cedula.trim() === "") {
+            alert("Ingrese una cédula para buscar");
+            return;
+        }
+
+        const aspirante = this.modelo
+            .getAspirantes()
+            .find(a => a.cedula === cedula);
+
+        if (!aspirante) {
+            this.vista.mostrarMensajeSinResultados2(
+                "No se encontró ningún aspirante con esa cédula"
+            );
+            return;
+        }
+
+        this.vista.mostrarRespuestas(aspirante);
     }
 
     async btRecargarOnClick() {

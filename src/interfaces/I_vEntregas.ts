@@ -14,11 +14,17 @@ export default interface I_vEntregas {
 
     onRecargar(callback: () => void): void;
     /* onVolver(callback: () => void): void; */
+
     onBuscarCO6(callback: () => void): void;
+    onBuscarListado(callback: () => void): void;
 
     get cedulaBuscarCO6(): string;
+    get cedulaBuscarListado(): string;
+    
     mostrarReporteCO6Individual(aspirante: Cl_mAspirante): void;
     mostrarMensajeSinResultados(mensaje: string): void;
+    mostrarMensajeSinResultados2(mensaje: string): void;
+    mostrarRespuestas(aspirante: Cl_mAspirante): void;
 
     mostrar(tipo: string): void;
     ocultar(): void;
