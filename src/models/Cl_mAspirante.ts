@@ -177,7 +177,7 @@ export default class Cl_mAspirante {
         }
 
     // Metodo de Veredicto
-        veridictoFinal(): string {
+        veredictoFinal(): string {
             if ( this.notaDefinitiva() >= 16) {
                 return "Aprobado";              
             }

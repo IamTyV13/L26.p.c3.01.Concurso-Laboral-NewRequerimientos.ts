@@ -22,7 +22,7 @@ export default class Cl_cEntregas {
             this.tipo = tipo;
             this.volverCallback = volverCallback;
             this.vista.onRecargar(() => this.btRecargarOnClick());
-            this.vista.onVolver(() => this.onVolver());
+            /* this.vista.onVolver(() => this.onVolver()); */
             this.vista.onBuscarCO6(() => this.btBuscarCO6OnClick());
             this.vista.mostrar(this.tipo);
             this.btRecargarOnClick();
@@ -31,7 +31,7 @@ export default class Cl_cEntregas {
     onVolver() {
         this.vista.ocultar();
         this.volverCallback();
-    }
+    } 
 
     async btBuscarCO6OnClick() {
         const cedula = this.vista.cedulaBuscarCO6;
@@ -75,21 +75,12 @@ export default class Cl_cEntregas {
                 case "formatoCO7": this.vista.mostrarFormatoCO7(this.modelo.getAspirantes()); break;
                 case "formatoCO8": this.vista.mostrarFormatoCO8(this.modelo.getAspirantes()); break;
                 case "formatoCO9": this.vista.mostrarFormatoCO9(this.modelo.getAspirantes()); break;
+                case "formatoCO10": this.vista.mostrarFormatoCO10(this.modelo.getAspirantes()); break;
                 case "formatoCO11": this.vista.mostrarFormatoCO11(this.modelo.getAspirantes()); break;
 
                 default: console.error("No se ha Encontrado la Sección", this.tipo);
 
             }
         }
-        /* 
-            if (this.tipo === "listado") {
-                this.vista.mostrarListado(this.modelo.getAspirantes());     
-            } 
-            
-            else if (this.tipo === "formatoCO6") {
-                this.vista.mostrarFormatoCO6(this.modelo.getAspirantes());
-            } 
-                
-        */
-    
+        
 }

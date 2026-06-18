@@ -23,6 +23,7 @@
                 <button id="concurso_btVerFormatoCO7"><strong> Formato CO-7 </strong></button>
                 <button id="concurso_btVerFormatoCO8"><strong> Formato CO-8 </strong></button>
                 <button id="concurso_btVerFormatoCO9"><strong> Formato CO-9 </strong></button>
+                <button id="concurso_btVerFormatoCO10"><strong> Formato CO-10 </strong></button>
                 <button id="concurso_btVerFormatoCO11"><strong> Formato CO-11 </strong></button>
             </div>
 
@@ -41,8 +42,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Cedula</th>
-                                <th>Nombre</th>
+                                <th>Participante(s)</th>
+                                <th>Documento de Identidad</th>
                             </tr>
                         </thead>
 
@@ -66,14 +67,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Aspirantes</th> 
-                            <th>Cédulas</th>
-                            <th>Postgrado (CO5) 35pts</th>
-                            <th>Pregrado (CO5.1) 30pts</th>
-                            <th>Producción (CO5.2) 15pts</th>
-                            <th>Méritos (CO5.3) 20pts</th>
-                            <th>Total Obtenido /100pts</th>
-                            <th>Calificación Final /20pts</th>
+                            <th>Participante(s)</th> 
+                            <th>Documento de Identidad</th>
+                            <th>I. Postgrado <br> (máx.35pts)</th>
+                            <th>II. Pregrado <br> (máx.30pts)</th>
+                            <th>III. Producción Científica <br> (máx.15pts)</th>
+                            <th>IV. Méritos y Experiencia <br> (máx.20pts)</th>
+                            <th>Total Obtenido <br> (máx.100pts)</th>
+                            <th>Calificación Final <br> (0-20pts)</th>
                         </tr>
                     </thead>
                     
@@ -182,6 +183,36 @@
     <!-- Cierre de la Sección -->            
         </section>
 
+    <!-- Sección de la Tabla del FormatoC09 -->
+        <section id="formatoCO10" hidden>
+
+    <!-- Titulo de la Sección -->
+        <h2>Formato CO-10</h2>
+
+        <!-- Div de la Tabla de la Sección -->
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Participante(s)</th>
+                            <th>Documento de Identidad</th>
+                            <th>Jurado A</th>
+                            <th>Jurado B</th>
+                            <th>Jurado C</th>
+                            <th>Califación Total Jurados</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="formatoCO10_tblFormatoCO10"></tbody>
+
+                </table>
+            </div>
+
+    <!-- Cierre de la Sección -->            
+        </section>
+
+
+
     <!-- Sección de la Tabla del FormatoC011 -->
         <section id="formatoCO11" hidden>
 
@@ -211,7 +242,7 @@
 
     <!-- Botones de Recargar y Volver para las tablas -->
         <div class="button-group">
-            <button id="entregas_btVolver"><strong> Volver </strong></button>
+            <!-- <button id="entregas_btVolver"><strong> Volver </strong></button> -->
             <button id="entregas_btRecargar"><strong> Recargar </strong></button>
         </div>
 

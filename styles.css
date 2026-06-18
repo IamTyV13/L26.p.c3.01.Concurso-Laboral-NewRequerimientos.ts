@@ -117,9 +117,13 @@ input[type="number"]:focus {
 
 /* === BOTONES === */
 
-.button-group {    
+.button-group { 
     text-align: center;
     margin-top: 20px;
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px 20px; 
+    justify-content: center;
 }
 
 button {

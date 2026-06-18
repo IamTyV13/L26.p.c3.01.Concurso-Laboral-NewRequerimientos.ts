@@ -17,6 +17,7 @@ export default class Cl_cConcurso {
         this.vista.onVerFormatoCO7(() => this.onVerFormatoCO7());
         this.vista.onVerFormatoCO8(() => this.onVerFormatoCO8());
         this.vista.onVerFormatoCO9(() => this.onVerFormatoCO9());
+        this.vista.onVerFormatoCO10(() => this.onVerFormatoCO10());
         this.vista.onVerFormatoCO11(() => this.onVerFormatoCO11());
         
     }
@@ -61,6 +62,9 @@ export default class Cl_cConcurso {
 
     onVerFormatoCO9() {
         this.abrirVentana("formatoCO9");    } 
+
+    onVerFormatoCO10() {
+        this.abrirVentana("formatoCO10");    } 
     
     onVerFormatoCO11() {
         this.abrirVentana("formatoCO11");    } 

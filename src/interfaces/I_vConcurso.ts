@@ -8,6 +8,7 @@ export default interface I_vConcurso {
         onVerFormatoCO7(callback: () => void): void;
         onVerFormatoCO8(callback: () => void): void;
         onVerFormatoCO9(callback: () => void): void;
+        onVerFormatoCO10(callback: () => void): void;
         onVerFormatoCO11(callback: () => void): void;
 
         /* deshabilitarBotones(): void;
