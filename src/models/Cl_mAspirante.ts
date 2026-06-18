@@ -133,7 +133,7 @@ export default class Cl_mAspirante {
 
     // Metodos para calcular las Calificaciones de la Tabla CO7 sobre el 10%.
         calificacion10Porciento(): number{
-            return (this.totalObtenido() * 10) / 100;   }
+            return ( this.calificacionFinal() * 10) / 100;   }
 
         /* ===Tabla CO8=== */
 
