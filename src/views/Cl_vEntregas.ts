@@ -337,7 +337,7 @@ export default class Cl_vEntregas implements I_vEntregas {
     
                 <h3>Nombre: ${aspirante.nombre} - Cédula: ${aspirante.cedula}</h3>
                 
-                <h4>📘 Formato (CO-5) - Total: ${aspirante.sumaPtsFormatoCO5()}</h4>
+                <h4> Formato (CO-5) - Total: ${aspirante.sumaPtsFormatoCO5()}</h4>
                 <div>
                     Pregunta 5.a: <input type="text" value="${aspirante.ptsFormatoCO5[0] || 0}" disabled> 
                     Pregunta 5.b: <input type="text" value="${aspirante.ptsFormatoCO5[1] || 0}" disabled> 
@@ -345,7 +345,7 @@ export default class Cl_vEntregas implements I_vEntregas {
                     Pregunta 5.d: <input type="text" value="${aspirante.ptsFormatoCO5[3] || 0}" disabled> 
                 </div>
                 
-                <h4>🎓 Formato (CO-5.1) - Total: ${aspirante.sumaPtsFormatoCO51()}</h4>
+                <h4> Formato (CO-5.1) - Total: ${aspirante.sumaPtsFormatoCO51()}</h4>
                 <div>
                     Pregunta 5.1.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> 
                     Pregunta 5.1.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> 
@@ -356,7 +356,7 @@ export default class Cl_vEntregas implements I_vEntregas {
                     Pregunta 5.1.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> 
                 </div>
 
-                <h4>📚 Formato (CO-5.2) - Total: ${aspirante.sumaPtsFormatoCO52()}</h4>
+                <h4> Formato (CO-5.2) - Total: ${aspirante.sumaPtsFormatoCO52()}</h4>
                 <div>
                     Pregunta 5.2.a: <input type="text" value="${aspirante.ptsFormatoCO52[0] || 0}" disabled> 
                     Pregunta 5.2.b: <input type="text" value="${aspirante.ptsFormatoCO52[1] || 0}" disabled> 
@@ -369,7 +369,7 @@ export default class Cl_vEntregas implements I_vEntregas {
                     Pregunta 5.2.i: <input type="text" value="${aspirante.ptsFormatoCO52[8] || 0}" disabled> 
                 </div>
 
-                <h4>🏆 Formato (CO-5.3) - Total: ${aspirante.sumaPtsFormatoCO53()}</h4>
+                <h4> Formato (CO-5.3) - Total: ${aspirante.sumaPtsFormatoCO53()}</h4>
                 <div>
                     Pregunta 5.3.a: <input type="text" value="${aspirante.ptsFormatoCO53[0] || 0}" disabled> 
                     Pregunta 5.3.b: <input type="text" value="${aspirante.ptsFormatoCO53[1] || 0}" disabled>
