@@ -1,3 +1,5 @@
+//Cl_vEntregas.ts
+
 import I_vEntregas from "../interfaces/I_vEntregas.js";
 import Cl_mAspirante from "../models/Cl_mAspirante.js";
 
@@ -37,7 +39,10 @@ export default class Cl_vEntregas implements I_vEntregas {
     // Métodos Para Recargar Pagina y Volver al Menu Principal
         private btRecargar: HTMLButtonElement;
         /* private btVolver: HTMLButtonElement;
- */
+*/
+    private onFiltrarSemanaCallback!: () => void;
+    private onMostrarTodosCallback!: () => void;
+
     constructor() {
         this.uiListado = document.getElementById("listado") as HTMLDivElement;
         this.uiFormatoCO6 = document.getElementById("formatoCO6") as HTMLDivElement;
@@ -67,7 +72,27 @@ export default class Cl_vEntregas implements I_vEntregas {
 
         this.btRecargar = document.getElementById("entregas_btRecargar") as HTMLButtonElement;
         /* this.btVolver = document.getElementById("entregas_btVolver") as HTMLButtonElement; */
-    }
+
+        // En el constructor de Cl_vEntregas
+        const btnFiltrar = document.getElementById("btnFiltrarSemana") as HTMLButtonElement;
+        const btnMostrarTodos = document.getElementById("btnMostrarTodos") as HTMLButtonElement;
+
+        console.log("btnFiltrarSemana:", btnFiltrar);
+        console.log("btnMostrarTodos:", btnMostrarTodos);
+
+        if (btnFiltrar) {
+            btnFiltrar.onclick = () => {
+                console.log("Botón Filtrar clickeado");
+                this.onFiltrarSemanaCallback?.();
+            };
+        }
+        if (btnMostrarTodos) {
+            btnMostrarTodos.onclick = () => {
+                console.log("Botón Mostrar Todos clickeado");
+                this.onMostrarTodosCallback?.();
+            };
+        }
+    }    
    
     // Metodos para la Pagina
         onRecargar(callback: () => void): void {
@@ -100,7 +125,9 @@ export default class Cl_vEntregas implements I_vEntregas {
                     const tr = document.createElement("tr");
                         tr.innerHTML = `
                             <td>${aspirante.nombre}</td>
-                            <td>${aspirante.cedula}</td>  
+                            <td>${aspirante.cedula}</td>
+                            <td>${aspirante.fechaRegistro.toLocaleDateString()}</td>
+                            <td>${aspirante.estadoRegistro()}</td>  
                         `;
                         fragment.appendChild(tr);
                     });
@@ -290,62 +317,96 @@ export default class Cl_vEntregas implements I_vEntregas {
         this.tblFormatoCO6.appendChild(fragment);
     }
 
-    mostrarRespuestas(aspirante: Cl_mAspirante): void {
-        const html = `
-
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: #f9f9f9;">
-
-        <h3>Nombre:${aspirante.nombre} - Cedula:${aspirante.cedula}</h3>
-        
-        <h4> Formato (CO-5) - Total: ${aspirante.sumaPtsFormatoCO5()}</h4>
-            <ul>
-                <li>Pregunta 5.a: <input type="text" value="${aspirante.ptsFormatoCO5[0] || 0}" disabled> pts</li>
-                <li>Pregunta 5.b: <input type="text" value="${aspirante.ptsFormatoCO5[1] || 0}" disabled> pts</li>
-                <li>Pregunta 5.c: <input type="text" value="${aspirante.ptsFormatoCO5[2] || 0}" disabled> pts</li>
-                <li>Pregunta 5.d: <input type="text" value="${aspirante.ptsFormatoCO5[3] || 0}" disabled> pts</li>
-            </ul>
-        
-        <h4> Formato (CO-5.1) - Total: ${aspirante.sumaPtsFormatoCO51()}</h4>
-            <ul>
-                <li>Pregunta 5.1.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> pts</li>
-                <li>Pregunta 5.1.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> pts</li>
-                <li>Pregunta 5.1.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> pts</li>
-                <li>Pregunta 5.1.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> pts</li>
-                <li>Pregunta 5.1.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> pts</li>
-                <li>Pregunta 5.1.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> pts</li>
-                <li>Pregunta 5.1.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> pts</li>
-            </ul>
-
-        <h4> Formato (CO-5.2) - Total: ${aspirante.sumaPtsFormatoCO52()}</h4>
-            <ul>
-                <li>Pregunta 5.2.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.h: <input type="text" value="${aspirante.ptsFormatoCO51[7] || 0}" disabled> pts</li>
-                <li>Pregunta 5.2.i: <input type="text" value="${aspirante.ptsFormatoCO51[8] || 0}" disabled> pts</li>
-            </ul>
-
-        <h4> Formato (CO-5.3) - Total: ${aspirante.sumaPtsFormatoCO53()}</h4>
-            <ul>
-                <li>Pregunta 5.3.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> pts</li>
-                <li>Pregunta 5.3.h: <input type="text" value="${aspirante.ptsFormatoCO51[7] || 0}" disabled> pts</li>
-            </ul>
-        
-        </div>
-    `;
     
-        document.getElementById("listado_lblRespuestas")!.innerHTML = html;
+    mostrarRespuestas(aspirante: Cl_mAspirante): void {
 
+        const fragment = document.createDocumentFragment();
+        const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${aspirante.nombre}</td>
+                <td>${aspirante.cedula}</td>
+                <td>${aspirante.fechaRegistro.toLocaleDateString()}</td>
+                <td>${aspirante.estadoRegistro()}</td>  
+            `;
+            fragment.appendChild(tr);
+        this.tblListado.innerHTML = "";
+        this.tblListado.appendChild(fragment);
+
+        const html = `
+            <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: #f9f9f9;">
+    
+                <h3>Nombre: ${aspirante.nombre} - Cédula: ${aspirante.cedula}</h3>
+                
+                <h4>📘 Formato (CO-5) - Total: ${aspirante.sumaPtsFormatoCO5()}</h4>
+                <div>
+                    Pregunta 5.a: <input type="text" value="${aspirante.ptsFormatoCO5[0] || 0}" disabled> 
+                    Pregunta 5.b: <input type="text" value="${aspirante.ptsFormatoCO5[1] || 0}" disabled> 
+                    Pregunta 5.c: <input type="text" value="${aspirante.ptsFormatoCO5[2] || 0}" disabled> 
+                    Pregunta 5.d: <input type="text" value="${aspirante.ptsFormatoCO5[3] || 0}" disabled> 
+                </div>
+                
+                <h4>🎓 Formato (CO-5.1) - Total: ${aspirante.sumaPtsFormatoCO51()}</h4>
+                <div>
+                    Pregunta 5.1.a: <input type="text" value="${aspirante.ptsFormatoCO51[0] || 0}" disabled> 
+                    Pregunta 5.1.b: <input type="text" value="${aspirante.ptsFormatoCO51[1] || 0}" disabled> 
+                    Pregunta 5.1.c: <input type="text" value="${aspirante.ptsFormatoCO51[2] || 0}" disabled> 
+                    Pregunta 5.1.d: <input type="text" value="${aspirante.ptsFormatoCO51[3] || 0}" disabled> 
+                    Pregunta 5.1.e: <input type="text" value="${aspirante.ptsFormatoCO51[4] || 0}" disabled> 
+                    Pregunta 5.1.f: <input type="text" value="${aspirante.ptsFormatoCO51[5] || 0}" disabled> 
+                    Pregunta 5.1.g: <input type="text" value="${aspirante.ptsFormatoCO51[6] || 0}" disabled> 
+                </div>
+
+                <h4>📚 Formato (CO-5.2) - Total: ${aspirante.sumaPtsFormatoCO52()}</h4>
+                <div>
+                    Pregunta 5.2.a: <input type="text" value="${aspirante.ptsFormatoCO52[0] || 0}" disabled> 
+                    Pregunta 5.2.b: <input type="text" value="${aspirante.ptsFormatoCO52[1] || 0}" disabled> 
+                    Pregunta 5.2.c: <input type="text" value="${aspirante.ptsFormatoCO52[2] || 0}" disabled> 
+                    Pregunta 5.2.d: <input type="text" value="${aspirante.ptsFormatoCO52[3] || 0}" disabled> 
+                    Pregunta 5.2.e: <input type="text" value="${aspirante.ptsFormatoCO52[4] || 0}" disabled> 
+                    Pregunta 5.2.f: <input type="text" value="${aspirante.ptsFormatoCO52[5] || 0}" disabled> 
+                    Pregunta 5.2.g: <input type="text" value="${aspirante.ptsFormatoCO52[6] || 0}" disabled> 
+                    Pregunta 5.2.h: <input type="text" value="${aspirante.ptsFormatoCO52[7] || 0}" disabled> 
+                    Pregunta 5.2.i: <input type="text" value="${aspirante.ptsFormatoCO52[8] || 0}" disabled> 
+                </div>
+
+                <h4>🏆 Formato (CO-5.3) - Total: ${aspirante.sumaPtsFormatoCO53()}</h4>
+                <div>
+                    Pregunta 5.3.a: <input type="text" value="${aspirante.ptsFormatoCO53[0] || 0}" disabled> 
+                    Pregunta 5.3.b: <input type="text" value="${aspirante.ptsFormatoCO53[1] || 0}" disabled>
+                    Pregunta 5.3.c: <input type="text" value="${aspirante.ptsFormatoCO53[2] || 0}" disabled>
+                    Pregunta 5.3.d: <input type="text" value="${aspirante.ptsFormatoCO53[3] || 0}" disabled> 
+                    Pregunta 5.3.e: <input type="text" value="${aspirante.ptsFormatoCO53[4] || 0}" disabled> 
+                    Pregunta 5.3.f: <input type="text" value="${aspirante.ptsFormatoCO53[5] || 0}" disabled> 
+                    Pregunta 5.3.g: <input type="text" value="${aspirante.ptsFormatoCO53[6] || 0}" disabled> 
+                    Pregunta 5.3.h: <input type="text" value="${aspirante.ptsFormatoCO53[7] || 0}" disabled> 
+                </div>
+        
+                <div style="margin-top: 20px; text-align: center;">
+                    <button id="btnCerrarDetalle" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                        ✖ Cerrar
+                    </button>
+                </div>
+            </div>
+        `;
+    
+    const elemento = document.getElementById("listado_lblRespuestas");
+        if (elemento) {
+            elemento.innerHTML = html;
+        }
+
+    const btnCerrar = document.getElementById("btnCerrarDetalle");
+        if (btnCerrar) {
+            btnCerrar.addEventListener("click", () => {
+                this.cerrarDetalle();
+            });
+        }
+    }
+
+    cerrarDetalle(): void {
+        const elemento = document.getElementById("listado_lblRespuestas");
+            if (elemento) {
+                elemento.innerHTML = "";
+            }
     }
 
     mostrarMensajeSinResultados(mensaje: string): void {
@@ -354,6 +415,16 @@ export default class Cl_vEntregas implements I_vEntregas {
 
     mostrarMensajeSinResultados2(mensaje: string): void {
         this.tblListado.innerHTML = `<tr><td colspan="8" style="padding:24px;color:#888;">${mensaje}</td></tr>`;
+    }
+
+    onFiltrarSemana(callback: () => void): void {
+        console.log("onFiltrarSemana registrado");
+        this.onFiltrarSemanaCallback = callback;
+    }
+
+    onMostrarTodos(callback: () => void): void {
+        console.log("onMostrarTodos registrado");
+        this.onMostrarTodosCallback = callback;
     }
 
     mostrar(tipo: string) {

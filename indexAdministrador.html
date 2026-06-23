@@ -33,13 +33,16 @@
     <!-- Sección Tabla Listado de Aspirantes -->
         <section id="listado" hidden>
 
-        <!-- Titulo de la Sección -->
+        <!-- Boton y Input de busqueda de la sección -->    
             <div >
-                    <label style="display: flex; gap: 8px; align-items: center; margin-top: 12px;"> Cédula:
-                        <input type="text" id="listado_inCedula" placeholder="Ej: 12345678">
-                        <button id="listado_btBuscarAsp">Buscar</button>
-                    </label>
-                </div><h2>Listado de Aspirantes</h2>
+                <label style="display: flex; gap: 8px; align-items: center; margin-top: 12px;"> Cédula:
+                    <input type="text" id="listado_inCedula" placeholder="Ej: 12345678">                        
+                    <button id="listado_btBuscarAsp">Buscar</button>
+                </label>
+            </div>
+
+            <!-- Titulo de la Sección -->    
+                <h2>Listado de Aspirantes</h2>
 
             <!-- Div de la Tabla de la Sección -->
                 <div class="table-wrapper">
@@ -49,11 +52,25 @@
                             <tr>
                                 <th>Participante(s)</th>
                                 <th>Documento de Identidad</th>
+                                <th>Fecha de Registro</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
 
                         <tbody id="listado_tblListado"></tbody>
                     </table>
+
+                
+                <!-- Botones de Filtrado por fecha -->
+                    <div class="button-group">
+                        <button id="btnFiltrarSemana" style="padding: 8px 16px; background-color: #ff9800; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            📊 Mostrar > 1 semana
+                        </button>
+                        <button id="btnMostrarTodos" style="padding: 8px 16px; background-color: #2196f3; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            📋 Mostrar todos
+                        </button>
+                    </div>
+
 
                 </div> 
 
@@ -66,6 +83,14 @@
 
     <!-- Sección de la Tabla del FormatoCO6 -->
         <section id="formatoCO6" hidden>
+
+        <!-- Boton y Input de busqueda de la sección -->
+            <div >
+                <label style="display: flex; gap: 8px; align-items: center; margin-top: 12px;"> Cédula:
+                    <input type="text" id="formatoCO6_inCedula" placeholder="Ej: 12345678">
+                    <button id="formatoCO6_btBuscar">Buscar</button>                    
+                </label>
+            </div>
             
        <!-- Titulo de la Sección -->
             <h2>Formato CO-6</h2>
@@ -96,15 +121,6 @@
                     <strong>Calificación más alta:</strong> <span id="formatoCO6_lblCalifMasAlta">0</span> /20pts
                     <br>
                     <strong>Calificación más baja:</strong> <span id="formatoCO6_lblCalifMasBaja">0</span> /20pts
-                </div>
-
-                <br>
-
-                <div >
-                    <label style="display: flex; gap: 8px; align-items: center; margin-top: 12px;"> Cédula:
-                        <input type="text" id="formatoCO6_inCedula" placeholder="Ej: 12345678">
-                        <button id="formatoCO6_btBuscar">Buscar</button>
-                    </label>
                 </div>
 
             </div>

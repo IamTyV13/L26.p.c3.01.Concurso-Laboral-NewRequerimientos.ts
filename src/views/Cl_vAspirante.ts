@@ -10,6 +10,7 @@ export default class Cl_vAspirante implements I_vAspirante {
         private inNotaExamenEscrito: HTMLInputElement;
         private inNotaExamenPractico: HTMLInputElement;
         private inNotaExamenAptitudes: HTMLInputElement;
+        private inFechaRegistro: HTMLInputElement;
 
     // Botones de Enviar y Cancelar
         private btnEnviar: HTMLButtonElement;
@@ -24,6 +25,7 @@ export default class Cl_vAspirante implements I_vAspirante {
         this.inNotaExamenEscrito = document.getElementById("aspirante_inNotaExamenEscrito") as HTMLInputElement;
         this.inNotaExamenPractico = document.getElementById("aspirante_inNotaExamenPractico") as HTMLInputElement;
         this.inNotaExamenAptitudes = document.getElementById("aspirante_inNotaExamenAptitudes") as HTMLInputElement;
+        this.inFechaRegistro = document.getElementById("aspirante_inFechaRegistro") as HTMLInputElement;
 
         this.btnEnviar = document.getElementById("aspirante_btnEnviar") as HTMLButtonElement;
         this.btnCancelar = document.getElementById("aspirante_btnCancelar") as HTMLButtonElement;
@@ -49,6 +51,10 @@ export default class Cl_vAspirante implements I_vAspirante {
 
         get notaExamenAptitudes(): number {
             return +this.inNotaExamenAptitudes.value;  }
+
+        get fechaRegistro(): string {
+            console.log("Fecha desde input:", this.inFechaRegistro.value); // 🔴 VERIFICA
+            return this.inFechaRegistro.value;  }
 
     // Arrays para que lleguen los puntos a la clase menor
         puntajeCO5(): number[] {
@@ -235,6 +241,7 @@ export default class Cl_vAspirante implements I_vAspirante {
                 this.inNotaExamenEscrito.value = "";
                 this.inNotaExamenPractico.value = "";
                 this.inNotaExamenAptitudes.value = "";
+                this.inFechaRegistro.value = "";
             }
 
         ocultar(): void {
@@ -407,3 +414,6 @@ export default class Cl_vAspirante implements I_vAspirante {
         }
 
 }
+
+/* Fecha de registro: de la evaluación, realizar un reporte que tomando en cuenta esa fecha y la de hoy, y te puedan mostrar 
+las evaluciones que llevan mas de una semana cargadas. */

@@ -25,6 +25,15 @@ export default class Cl_cEntregas {
             /* this.vista.onVolver(() => this.onVolver()); */
             this.vista.onBuscarCO6(() => this.btBuscarCO6OnClick());
             this.vista.onBuscarListado(() => this.btBuscarEnListadoClick());
+            this.vista.cerrarDetalle();
+            this.vista.onFiltrarSemana(() => {
+            console.log("Callback de filtrar ejecutado");
+            this.btFiltrarSemanaClick();
+            });
+            this.vista.onMostrarTodos(() => {
+                console.log("Callback de mostrar todos ejecutado");
+                this.btMostrarTodosClick();
+            });
             this.vista.mostrar(this.tipo);
             this.btRecargarOnClick();
     }
@@ -62,7 +71,9 @@ export default class Cl_cEntregas {
         if (!cedula || cedula.trim() === "") {
             alert("Ingrese una cédula para buscar");
             return;
+
         }
+        this.vista.cerrarDetalle();
 
         const aspirante = this.modelo
             .getAspirantes()
@@ -77,6 +88,23 @@ export default class Cl_cEntregas {
 
         this.vista.mostrarRespuestas(aspirante);
     }
+
+        async btFiltrarSemanaClick() {
+            console.log("btFiltrarSemanaClick ejecutado");
+            const todos = this.modelo.getAspirantes();
+            const filtrados = todos.filter(a => a.estaMasDeUnaSemana());
+            
+            if (filtrados.length === 0) {
+                this.vista.mostrarMensajeSinResultados("No hay registros con más de 1 semana");
+                return;
+            }
+                this.vista.mostrarListado(filtrados);
+        }
+
+        async btMostrarTodosClick() {
+            const todos = this.modelo.getAspirantes();
+                this.vista.mostrarListado(todos);
+        }
 
     async btRecargarOnClick() {
         let resultado = await Cl_sEntregas.getEntregas();

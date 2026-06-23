@@ -18,6 +18,7 @@ export default class Cl_mConcurso {
                     notaExamenEscrito: item.notaExamenEscrito,
                     notaExamenPractico: item.notaExamenPractico,
                     notaExamenAptitudes: item.notaExamenAptitudes,
+                    fechaRegistro: item.fechaRegistro,
                 });
 
                 aspirante.ptsFormatoCO5 = item.ptsFormatoCO5 || [];

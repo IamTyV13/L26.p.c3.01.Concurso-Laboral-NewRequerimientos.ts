@@ -9,6 +9,7 @@ export default class Cl_mAspirante {
         private _notaExamenEscrito: number = 0;
         private _notaExamenPractico: number = 0;
         private _notaExamenAptitudes: number = 0;
+        private _fechaRegistro: Date = new Date();
 
     // Arrays de De las Secciones de Preguntas
         ptsFormatoCO5: number[] = [];
@@ -21,19 +22,22 @@ export default class Cl_mAspirante {
         juradoBCO10: number[] = [];
         juradoCCO10: number[] = [];
 
-    // trabajar los 31 atributos : respuestaForm5.1 y asì para todos o arrays 4 para ser preciso.
-
-    constructor ({nombre, cedula, notaExamenEscrito, notaExamenPractico, notaExamenAptitudes}: 
-        {nombre: string, cedula: string, notaExamenEscrito: number, notaExamenPractico: number, notaExamenAptitudes: number} = 
-        {nombre: '', cedula: '', notaExamenEscrito: 0, notaExamenPractico: 0, notaExamenAptitudes: 0}) {
+    constructor ({nombre, cedula, notaExamenEscrito, notaExamenPractico, notaExamenAptitudes, fechaRegistro}: 
+        {nombre: string, cedula: string, notaExamenEscrito: number, notaExamenPractico: number, notaExamenAptitudes: number, fechaRegistro: string} = 
+        {nombre: '', cedula: '', notaExamenEscrito: 0, notaExamenPractico: 0, notaExamenAptitudes: 0, fechaRegistro: ''}) {
 
         this.nombre = nombre;
         this.cedula = cedula;
         this.notaExamenEscrito = notaExamenEscrito;
         this.notaExamenPractico = notaExamenPractico;
         this.notaExamenAptitudes = notaExamenAptitudes;
-
+        
+        if (fechaRegistro) {
+            this._fechaRegistro = new Date(fechaRegistro);
+        } else {
+            this._fechaRegistro = new Date();
         }
+    }
 
     // Getters y Setters
         set nombre(n: string) {
@@ -66,6 +70,43 @@ export default class Cl_mAspirante {
         get notaExamenAptitudes(): number {
             return this._notaExamenAptitudes; }
 
+        get fechaRegistro(): Date {
+            return this._fechaRegistro; }
+
+        set fechaRegistro(f: string | Date) {
+            console.log("Setter fechaRegistro recibiendo:", f);
+            if (f) {
+                this._fechaRegistro = new Date(f);
+            } else {
+                this._fechaRegistro = new Date();
+            }
+        }
+        
+    estadoRegistro(): string {
+        const hoy = new Date();
+        const diferenciaTiempo = hoy.getTime() - this.fechaRegistro.getTime();
+        const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24 ) )
+
+        if ( diferenciaDias > 7 ) {
+            return "Hace más de 1 semana"  }
+
+        else if ( diferenciaDias === 0 ) {
+            return "Hoy"                   }
+
+        else {
+            return `Hace ${diferenciaDias} dias`
+        }
+    }
+
+    estaMasDeUnaSemana(): boolean {
+        const hoy = new Date();
+        const diferenciaTiempo = hoy.getTime() - this.fechaRegistro.getTime();
+        const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24 ) )
+        return diferenciaDias > 7;
+    }
+    
+
+
     // Metodo para que lleguen los puntos de cada Seccion en especifico.
         agregarPuntos(seccion: string, puntos: number): void {
             switch (seccion) {
@@ -84,11 +125,9 @@ export default class Cl_mAspirante {
             const tope = 35;
             let suma = 0;
             
-            // Sumar primero
             for (let b = 0; b < this.ptsFormatoCO5.length; b++) {   
                 suma += this.ptsFormatoCO5[b];  }
             
-            // Comparar después
             if (suma > tope) {
                 return tope; }
 
@@ -99,11 +138,9 @@ export default class Cl_mAspirante {
             const tope = 30;
             let suma = 0;
 
-            // Sumar primero
                 for (let b = 0; b < this.ptsFormatoCO51.length; b++) {   
                     suma += this.ptsFormatoCO51[b];  }
 
-            // Comparar después
                 if (suma > tope) {
                     return tope; }
 
@@ -112,48 +149,38 @@ export default class Cl_mAspirante {
         
         sumaPtsFormatoCO52(): number{
             const suma = this.ptsFormatoCO52.reduce((suma, pts) => suma + pts, 0);
-                return Math.min(suma, 15); // Limitar la suma a un máximo de 15 puntos
+                return Math.min(suma, 15);
         }
 
         sumaPtsFormatoCO53(): number{
             const suma = this.ptsFormatoCO53.reduce((suma, pts) => suma + pts, 0);
-                return Math.min(suma, 20); // Limitar la suma a un máximo de 20 puntos
+                return Math.min(suma, 20);
         }
     
     // Metodo para sumar los puntos totales de las Secciones sobre el 100 puntos.
         totalObtenido(): number{
-            return this.sumaPtsFormatoCO5() + this.sumaPtsFormatoCO51() + this.sumaPtsFormatoCO52() + this.sumaPtsFormatoCO53();
-        }
+            return this.sumaPtsFormatoCO5() + this.sumaPtsFormatoCO51() + this.sumaPtsFormatoCO52() + this.sumaPtsFormatoCO53();    }
 
     // Metodo para calcular la Calificacion Final del Aspirante sobre 20 puntos.
         calificacionFinal(): number{
             return this.totalObtenido() / 5;    }
 
         /* ===Tabla CO7=== */
-
-    // Metodos para calcular las Calificaciones de la Tabla CO7 sobre el 10%.
         calificacion10Porciento(): number{
             return ( this.calificacionFinal() * 10) / 100;   }
 
         /* ===Tabla CO8=== */
-
-    // Metodos para calcular las Calificaciones de la Tabla CO8
         calificacionCO8(): number{
             return (this.notaExamenEscrito + this.notaExamenPractico) / 2;  }
 
-    // Metodo para calcular las Calificaciones de cada Seccion CO8 sobre el 60%.
         calificacion60PorcientoCO8(): number{
             return (this.calificacionCO8() * 60) / 100;  }
 
         /* ===Tabla CO9=== */
-
-    // Metodo para calcular la Calificacion de la prueba de aptitudes Tabla CO9 sobre el 30%.
         calificacion30PorcientoAptitudes(): number{
             return (this.notaExamenAptitudes * 30) / 100;   }
 
         /* ===Tabla CO10 === */
-
-    // Metodo para que lleguen los puntos de cada Jurado en especifico.
         agregarPtsJurado(jurado: string, puntos: number): void {
             switch (jurado) {
 
@@ -166,8 +193,6 @@ export default class Cl_mAspirante {
         }
 
         /* ===Tabla CO11 === */
-
-    // Acta Final del Veredicto, suma de calificaciones de las Tablas CO7, CO8 y CO9.
         notaDefinitiva(): number{
             const c10Porcent = this.calificacion10Porciento();
             const c60Porcent = this.calificacion60PorcientoCO8();
@@ -176,7 +201,6 @@ export default class Cl_mAspirante {
             return c10Porcent + c60Porcent + c30Porcent;
         }
 
-    // Metodo de Veredicto
         veredictoFinal(): string {
             if ( this.notaDefinitiva() >= 16) {
                 return "Aprobado";              
@@ -184,20 +208,19 @@ export default class Cl_mAspirante {
                 return "Reprobado";
         }
 
-    // Suma de puntos de Cada Jurado en Especifico
         sumaPtsJuradoA(): number{
             const suma = this.juradoACO10.reduce((suma, pts) => suma + pts, 0);
-                return Math.min(suma, 60); // Limitar la suma a un máximo de 60 puntos
+                return Math.min(suma, 60);
         }
 
         sumaPtsJuradoB(): number{
             const suma = this.juradoBCO10.reduce((suma, pts) => suma + pts, 0);
-                return Math.min(suma, 60); // Limitar la suma a un máximo de 60 puntos
+                return Math.min(suma, 60);
         }
 
         sumaPtsJuradoC(): number{
             const suma = this.juradoCCO10.reduce((suma, pts) => suma + pts, 0);
-                return Math.min(suma, 60); // Limitar la suma a un máximo de 60 puntos
+                return Math.min(suma, 60);
         }
 
         puntajeTotalJurados(): number{
@@ -217,6 +240,7 @@ export default class Cl_mAspirante {
             tabla: this.tabla,
             nombre: this.nombre,
             cedula: this.cedula,
+            fechaRegistro: this.fechaRegistro.toISOString(),
             notaExamenEscrito: this.notaExamenEscrito,
             notaExamenPractico: this.notaExamenPractico,
             notaExamenAptitudes: this.notaExamenAptitudes,

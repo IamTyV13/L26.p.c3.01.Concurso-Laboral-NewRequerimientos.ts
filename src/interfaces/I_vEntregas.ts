@@ -17,6 +17,7 @@ export default interface I_vEntregas {
 
     onBuscarCO6(callback: () => void): void;
     onBuscarListado(callback: () => void): void;
+    cerrarDetalle(): void;
 
     get cedulaBuscarCO6(): string;
     get cedulaBuscarListado(): string;
@@ -25,6 +26,9 @@ export default interface I_vEntregas {
     mostrarMensajeSinResultados(mensaje: string): void;
     mostrarMensajeSinResultados2(mensaje: string): void;
     mostrarRespuestas(aspirante: Cl_mAspirante): void;
+
+    onFiltrarSemana(callback: () => void): void;
+    onMostrarTodos(callback: () => void): void;
 
     mostrar(tipo: string): void;
     ocultar(): void;

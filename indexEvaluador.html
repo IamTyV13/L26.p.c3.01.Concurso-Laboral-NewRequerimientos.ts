@@ -29,6 +29,13 @@
                 </label>
             </div>
 
+        <!-- Input de la Fecha de Registro -->
+            <div>
+                <label> Fecha de Registro:
+                    <input type="date" id="aspirante_inFechaRegistro" value="2026-06-23">
+                </label>
+            </div>
+
         <!-- Input de las notas del Examen Escrito del Aspirante -->
             <div>
                 <label> Nota del Examen Escrito:
@@ -373,20 +380,27 @@
         </section>
 
     <!-- Importamos Los Archivos Js -->
-          <script type="module">
+           <script type="module">
 
-            import Cl_cAspirante from "./dist/controllers/Cl_cAspirante.js";
+             import Cl_cAspirante from "./dist/controllers/Cl_cAspirante.js";
 
-            // Importamos SOLO las vistas planas
-                import Cl_vAspirante from "./dist/views/Cl_vAspirante.js";
+             // Importamos SOLO las vistas planas
+                 import Cl_vAspirante from "./dist/views/Cl_vAspirante.js";
 
-            // 1. Instanciamos las vistas
-                const vistaAspirante = new Cl_vAspirante();
+             // 1. Instanciamos las vistas
+                 const vistaAspirante = new Cl_vAspirante();
 
-            // 2. Inyectamos las vistas en los controladores.
-                new Cl_cAspirante(vistaAspirante);
+             // 2. Inyectamos las vistas en los controladores.
+                 new Cl_cAspirante(vistaAspirante);
 
-        </script>
+         </script>
+
+         <script>
+             function generarReporte() {
+                 const controlador = new Cl_cAspirante(new Cl_vAspirante());
+                 controlador.generarReporte();
+             }
+         </script>
 
 </body>
 </html>

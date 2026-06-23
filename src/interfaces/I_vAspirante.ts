@@ -7,6 +7,7 @@ export interface I_vAspirante {
         get notaExamenEscrito(): number;
         get notaExamenPractico(): number;
         get notaExamenAptitudes(): number;
+        get fechaRegistro(): string;
 
     // Métodos de la Clase Menor
         mostrar(): void;

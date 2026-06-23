@@ -22,9 +22,11 @@ export default class Cl_cAspirante {
                 cedula: this.vista.cedula,
                 notaExamenEscrito: this.vista.notaExamenEscrito,
                 notaExamenPractico: this.vista.notaExamenPractico,
-                notaExamenAptitudes: this.vista.notaExamenAptitudes
-
+                notaExamenAptitudes: this.vista.notaExamenAptitudes,
+                fechaRegistro: this.vista.fechaRegistro
+                
             });
+            
 
         // 2. Agregar puntajes de las 4 secciones de preguntas.
 
@@ -60,4 +62,6 @@ export default class Cl_cAspirante {
                 this.vista.mostrarConfirmacion();
             }
         }
+        
+
 }
