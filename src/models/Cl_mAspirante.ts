@@ -81,29 +81,30 @@ export default class Cl_mAspirante {
                 this._fechaRegistro = new Date();
             }
         }
-        
-    estadoRegistro(): string {
-        const hoy = new Date();
-        const diferenciaTiempo = hoy.getTime() - this.fechaRegistro.getTime();
-        const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24 ) )
+    
+    /* Metodos del Requerimiento con las Fechas */
+        estadoRegistro(): string {
+            const hoy = new Date();
+            const diferenciaTiempo = hoy.getTime() - this.fechaRegistro.getTime();
+            const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24 ) )
 
-        if ( diferenciaDias > 7 ) {
-            return "Hace más de 1 semana"  }
+            if ( diferenciaDias > 7 ) {
+                return "Hace más de 1 semana"  }
 
-        else if ( diferenciaDias === 0 ) {
-            return "Hoy"                   }
+            else if ( diferenciaDias === 0 ) {
+                return "Hoy"                   }
 
-        else {
-            return `Hace ${diferenciaDias} dias`
+            else {
+                return `Hace ${diferenciaDias} dias`
+            }
         }
-    }
 
-    estaMasDeUnaSemana(): boolean {
-        const hoy = new Date();
-        const diferenciaTiempo = hoy.getTime() - this.fechaRegistro.getTime();
-        const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24 ) )
-        return diferenciaDias > 7;
-    }
+        estaMasDeUnaSemana(): boolean {
+            const hoy = new Date();
+            const diferenciaTiempo = hoy.getTime() - this.fechaRegistro.getTime();
+            const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24 ) )
+            return diferenciaDias > 7;
+        }
     
 
 
